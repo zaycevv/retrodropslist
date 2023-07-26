@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Badge, { BadgeProps } from './Badge';
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter';
+import Link from 'next/link';
 
 export type Chance = 'high' | 'medium' | 'low';
 
@@ -35,21 +36,29 @@ export default function Card({
       className={`w-full rounded-lg border border-black px-6 py-7  ${className}`}
     >
       <div className='flex items-center justify-between gap-7'>
-        <Image src={imageUrl} width={100} height={100} alt={imageUrl} />
+        <Image
+          src={imageUrl}
+          width={100}
+          height={100}
+          alt={imageUrl}
+          className='h-12 w-12 md:h-24 md:w-24'
+        />
         <div className='w-full'>
           <div className='flex items-center justify-between '>
-            <h1 className='text-2xl font-bold'>{title}</h1>
-            <a href={`http://${link}/`}>{link}</a>
+            <h1 className='font-bold md:text-2xl'>{title}</h1>
+            <Link href={`http://${link}/`} className='hover:underline'>
+              {link}
+            </Link>
           </div>
           <div className='mt-2 flex items-center justify-between'>
-            <h1 className='text-2xl font-bold'>{raised}</h1>
-            <h1 className={`text-2xl font-bold ${chanceClasses}`}>
+            <h1 className='font-bold md:text-2xl'>{raised}</h1>
+            <h1 className={`font-bold md:text-2xl ${chanceClasses}`}>
               {capitalizeFirstLetter(chance)}
             </h1>
           </div>
         </div>
       </div>
-      <div className='mt-6 flex gap-3'>
+      <div className='mt-6 flex flex-wrap gap-3'>
         {badges.map((el) => (
           <Badge key={el.title} {...el} />
         ))}

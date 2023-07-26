@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import IconButton from './common/Button/IconButton';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -8,11 +8,13 @@ export default function Header() {
       <nav className='flex items-center justify-between'>
         <div className='flex items-center gap-2'>
           <Image src='/logo.svg' height={50} width={50} alt='logo' />
-          <p className='font-bold'>Airdrops List</p>
+          <p className='text-xl font-bold'>AIRDROPS LIST</p>
         </div>
-        <IconButton iconUrl='/icons/X.svg' variant='secondary'>
-          Twitter
-        </IconButton>
+        <Link href='https://x.com/zaycevv_a' target='_blank'>
+          <IconButton iconUrl='/icons/X.svg' variant='secondary'>
+            Twitter
+          </IconButton>
+        </Link>
       </nav>
     </div>
   );
